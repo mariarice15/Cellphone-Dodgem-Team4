@@ -57,7 +57,7 @@ class Player:
 
         for obstacle in obstacles:
             #print("obstacle:", obstacle)
-            self.store_obstacles[obstacle[0]] = obstacle[1], obstacle[2]
+            self.obstacles[obstacle[0]] = obstacle[1], obstacle[2]
 
     # simulator calls this function when the player encounters an obstacle
     # Maybe if edited and we're given the obstacle id we can add it to our database
@@ -79,7 +79,7 @@ class Player:
         self.pos_x = pos_x
         self.pos_y = pos_y
         
-        return 'move'
+        return 'lookup'
     
     # simulator calls this function to get the next move from the player
     # this function is called if the player returns 'move' as the action in the get_action function
