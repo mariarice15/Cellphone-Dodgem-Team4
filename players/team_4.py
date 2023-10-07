@@ -79,7 +79,7 @@ class Player:
         self.pos_x = pos_x
         self.pos_y = pos_y
         
-        return 'lookup'
+        return 'move'
     
     # simulator calls this function to get the next move from the player
     # this function is called if the player returns 'move' as the action in the get_action function
