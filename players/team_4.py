@@ -157,8 +157,9 @@ class Player:
         self.sign_x *= -1
         self.sign_y *= -1
 
-        # self.pos_x += self.sign_x * self.vx
-        # self.pos_y += self.sign_y * self.vy
+        #Once A star is complete:
+        #self.action = 'lookup'
+        #self.obstacle_path = self.A_star_obstacle_search()
 
     def A_star_obstacle_search(self):
         frontier = queue.PriorityQueue()
@@ -198,6 +199,53 @@ class Player:
     # simulator calls this function to get the next move from the player
     # this function is called if the player returns 'move' as the action in the get_action function
     def get_next_move(self):
+
+        #Once A-star complete:
+        #Unsure the structure which it returns, but integrating it into get_next_move should look something like this
+        '''
+        if len(self.paths) == 0:
+            #exit strategy code
+        else: 
+            if len(self.obstacle_path) > 0:
+                target_location = self.obstacle_path[0]
+                delta_y = target_stall.y - self.pos_y
+                delta_x = target_stall.x - self.pos_x
+                self.obstacle_path.remove(target_location)
+
+            elif self.paths and len(self.paths) > 0:
+                target_stall = self.paths[0]
+                delta_y = target_stall.y - self.pos_y
+                delta_x = target_stall.x - self.pos_x
+
+            if delta_y == 0:
+                    self.vy = 0
+                    self.vx = 1
+                elif delta_x == 0:
+                    self.vy = 1
+                    self.vx = 0
+                else:
+                    angle = math.atan(numpy.abs(delta_y) / numpy.abs(delta_x))
+                    # sin/cos multiplied by 1 to get the straight line distance to the point
+                    self.vy = math.sin(angle)
+                    self.vx = math.cos(angle)
+
+                if delta_y < 0:
+                    self.sign_y = -1
+                else:
+                    self.sign_y = 1
+
+                if delta_x < 0:
+                    self.sign_x = -1
+                else:
+                    self.sign_x = 1
+        
+        new_pos_x = self.pos_x + self.sign_x * self.vx
+        new_pos_y = self.pos_y + self.sign_y * self.vy
+
+        return new_pos_x, new_pos_y
+
+
+        '''
 
         if self.collision_counter > 0:
             self.collision_counter -= 1
